@@ -53,7 +53,7 @@ export class UserConfig {
 }
 
 // https://platform.openai.com/docs/models/overview
-export type CHATMODEL = 'gpt-3.5-turbo' | 'gpt-3.5-turbo-0301' | 'gpt-4' | 'gpt-4-0314' | 'gpt-4-32k' | 'gpt-4-32k-0314' | 'ext-davinci-002-render-sha-mobile' | 'gpt-4-mobile' | 'gpt-4-browsing'
+export type CHATMODEL = 'gpt-3.5-turbo' | 'gpt-3.5-turbo-0301' | 'gpt-4' | 'gpt-4-0314' | 'gpt-4-32k' | 'gpt-4-32k-0314' | 'text-davinci-002-render-sha' | 'text-davinci-002-render-sha-mobile' | 'gpt-4-mobile' | 'gpt-4-browsing'
 
 export const CHATMODELS: CHATMODEL[] = [
   'gpt-3.5-turbo',
@@ -62,7 +62,8 @@ export const CHATMODELS: CHATMODEL[] = [
   'gpt-4-0314',
   'gpt-4-32k',
   'gpt-4-32k-0314',
-  'ext-davinci-002-render-sha-mobile',
+  'text-davinci-002-render-sha',
+  'text-davinci-002-render-sha-mobile',
   'gpt-4-mobile',
   'gpt-4-browsing',
 ]
@@ -74,11 +75,14 @@ export const chatModelOptions = [
   'gpt-4-0314',
   'gpt-4-32k',
   'gpt-4-32k-0314',
+  'text-davinci-002-render-sha',
   'text-davinci-002-render-sha-mobile',
   'gpt-4-mobile',
   'gpt-4-browsing',
 ].map((model: string) => {
   let label = model
+  if (model === 'text-davinci-002-render-sha')
+    label = 'gpt-3.5-browsing'
   if (model === 'text-davinci-002-render-sha-mobile')
     label = 'gpt-3.5-mobile'
   return {
